@@ -19,6 +19,8 @@ GZ      = $(HOME)/gz
 
 # \ tool
 CURL    = curl -L -o
+ERL     = erl
+ERLC    = erlc
 NIMB    = nimble
 NIMP	= nimpretty
 # / tool
@@ -28,12 +30,19 @@ N      += src/$(MODULE).nim src/config.nim src/metainfo.nim
 S      += $(Y) $(N) $(E) $(X) $(C) $(LL)
 # / src
 
+# \ obj
+BEAM   += bin/$(MODULE).beam
+
+bin/%.beam: src/%.erl
+	$(ERLC) -o bin $<
+# / obj
+
 # \ all
 .PHONY: all
-all: $(S)
+all: $(S) $(BEAM)
 	time nimble build --usenimcache --nimcache:$(TMP)/nim
 	file bin/$(MODULE)
-	time nimble run
+	time nimble run 1 2 3
 	$(MAKE) test
 	$(MAKE) format
 

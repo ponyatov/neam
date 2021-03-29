@@ -3,6 +3,7 @@
 
 import neampkg/submodule
 import metainfo
+# import config
 
 when isMainModule:
   echo(getWelcomeMessage())

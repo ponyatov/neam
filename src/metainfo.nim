@@ -7,6 +7,13 @@ const
     LICENSE* = "MIT"
     GITHUB*  = "https://github.com/ponyatov/neam"
 
-proc README*(): string = """
-#  `#{MODULE}`
+import strformat
+
+proc README*(): string = fmt"""
+#  `{MODULE}`
+## {TITLE}
+
+(c) {AUTHOR} <<{EMAIL}>> {YEAR} {LICENSE}
+
+github: {GITHUB}
 """
