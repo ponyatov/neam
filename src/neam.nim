@@ -6,3 +6,4 @@ import metainfo
 
 when isMainModule:
   echo(getWelcomeMessage())
+  echo README()
